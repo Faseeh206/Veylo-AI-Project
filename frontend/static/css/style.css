@@ -1341,3 +1341,154 @@ html.theme-changing body,html.theme-changing .section,html.theme-changing .foote
 .nav-brand:focus-visible .veylo-mark g{animation-play-state:paused}
 @media(hover:hover) and (pointer:fine){.nav-brand:hover .veylo-mark g{animation-play-state:paused}}
 @media(prefers-reduced-motion:reduce){.veylo-mark g{animation:none!important;transform:none!important}}
+
+/* ==========================================================================
+   REACT BITS PRO — GYROSCOPE CURSOR
+   Directional arrow cursor with angular velocity banking & inertial ring
+   White in dark mode • Black in light mode • Zero layout thrashing
+   ========================================================================== */
+
+@media (pointer: fine) {
+  body.gyro-cursor-active,
+  body.gyro-cursor-active a,
+  body.gyro-cursor-active button,
+  body.gyro-cursor-active [role="button"],
+  body.gyro-cursor-active select,
+  body.gyro-cursor-active .tab-btn,
+  body.gyro-cursor-active .btn,
+  body.gyro-cursor-active .chip,
+  body.gyro-cursor-active .badge[onclick],
+  body.gyro-cursor-active .segmented-item {
+    cursor: none !important;
+  }
+
+  body.gyro-cursor-active input,
+  body.gyro-cursor-active textarea {
+    cursor: text !important;
+  }
+}
+
+.gyroscope-cursor {
+  position: fixed;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+  z-index: 9999999;
+  will-change: transform;
+  transform: translate3d(-100px, -100px, 0);
+  opacity: 0;
+  transition: opacity 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.gyroscope-cursor.is-visible {
+  opacity: 1;
+}
+
+/* Dark Mode Theme Tokens: Pure Radiant White */
+[data-theme="dark"] .gyroscope-cursor {
+  --gyro-color: #ffffff;
+  --gyro-ring-color: rgba(255, 255, 255, 0.35);
+  --gyro-pip: #10b981;
+  --gyro-shadow: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.85)) drop-shadow(0 0 5px rgba(255, 255, 255, 0.4));
+}
+
+/* Light Mode Theme Tokens: Deep Onyx / Black */
+[data-theme="light"] .gyroscope-cursor {
+  --gyro-color: #0f172a;
+  --gyro-ring-color: rgba(15, 23, 42, 0.3);
+  --gyro-pip: #059669;
+  --gyro-shadow: drop-shadow(0 2px 6px rgba(15, 23, 42, 0.28));
+}
+
+.gyro-arrow-wrapper {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 26px;
+  height: 26px;
+  margin-top: -13px;
+  margin-left: -13px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--gyro-color);
+  filter: var(--gyro-shadow);
+  transform-origin: 50% 50%;
+  will-change: transform;
+  transition: filter 0.15s ease;
+}
+
+.gyro-arrow-svg {
+  width: 22px;
+  height: 22px;
+  display: block;
+}
+
+.gyro-core-pip {
+  fill: var(--gyro-pip);
+  stroke: var(--gyro-color);
+  stroke-width: 0.6;
+}
+
+/* Inertial Gyroscope Stabilizer Ring */
+.gyro-ring-wrapper {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 44px;
+  height: 44px;
+  margin-top: -22px;
+  margin-left: -22px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--gyro-ring-color);
+  pointer-events: none;
+  transform-origin: 50% 50%;
+  will-change: transform;
+  transition: opacity 0.2s ease;
+}
+
+.gyro-ring-svg {
+  width: 44px;
+  height: 44px;
+  animation: gyro-ring-rotate 16s linear infinite;
+}
+
+@keyframes gyro-ring-rotate {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+/* Interactive States: Hovering over interactive triggers */
+.gyroscope-cursor.is-hovering .gyro-arrow-wrapper {
+  filter: var(--gyro-shadow) drop-shadow(0 0 8px var(--gyro-pip));
+}
+
+.gyroscope-cursor.is-hovering .gyro-ring-wrapper {
+  color: var(--gyro-pip);
+  opacity: 0.9;
+}
+
+/* Interactive Click: Tactile spring press */
+.gyroscope-cursor.is-clicking .gyro-arrow-wrapper {
+  transform: scale(0.82) !important;
+}
+
+.gyroscope-cursor.is-clicking .gyro-ring-wrapper {
+  opacity: 0.4;
+}
+
+/* Over text fields: Soften and shrink so text caret takes visual priority */
+.gyroscope-cursor.is-text-input {
+  opacity: 0.35 !important;
+}
+
+.gyroscope-cursor.is-text-input .gyro-ring-wrapper {
+  opacity: 0;
+}
+
+
+/* Veylo integration: keep the native pointer out of the upload target. */
+@media(pointer:fine){body.gyro-cursor-active .dropzone-card{cursor:none!important}}
+@media(pointer:coarse),(prefers-reduced-motion:reduce){.gyroscope-cursor{display:none!important}body.gyro-cursor-active,body.gyro-cursor-active :is(a,button,select,[role="button"],.btn,.chip,.tab-btn,.badge[onclick],.segmented-item,.dropzone-card){cursor:revert!important}}
