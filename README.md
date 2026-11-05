@@ -72,19 +72,6 @@ An internet connection is needed to install Python dependencies and stream the d
 
 ---
 
-## Project documents
-
-The project PDFs and slide deck are available directly in the repository; download them to open locally:
-
-- **Presentation:** [`docs/FreshSense_Presentation_Designed.pdf`](docs/FreshSense_Presentation_Designed.pdf)
-- **Product requirements:** [`docs/FreshSense_PRD.pdf`](docs/FreshSense_PRD.pdf)
-- **Research paper:** [`docs/Food Freshness Detection Using Machine Learning Algorithms.pdf`](docs/Food%20Freshness%20Detection%20Using%20Machine%20Learning%20Algorithms.pdf)
-- **Editable slides:** [`docs/Food Freshness Detection.pptx`](docs/Food%20Freshness%20Detection.pptx)
-
-Some archived documents retain the project's earlier FreshSense name.
-
----
-
 ## 🔬 The 5-Stage Freshness Spectrum
 
 | Stage | UI Badge | Biological & Surface Indicators | Actionable Recommendation |
