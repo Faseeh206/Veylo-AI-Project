@@ -1,11 +1,13 @@
-# Veylo
+<p align="center">
+  <img src="docs/assets/veylo-wordmark.svg" alt="Veylo — focus-leaf logo and Onest wordmark" width="420">
+</p>
 
 **Automated Produce Freshness Diagnostics via Deep Convolutional Neural Networks**  
 *Pak-Angels Mid-Program Hackathon • Applied AI & Computer Vision Track • Production MVP*
 
 [![Model](https://img.shields.io/badge/Model-MobileNetV2%20(11.5%20MB)-10B981?style=flat-square)](https://keras.io/api/applications/mobilenet/)
-[![Macro F1](https://img.shields.io/badge/Validation%20Macro%20F1-0.82-059669?style=flat-square)](#-machine-learning--benchmarks)
-[![Inference](https://img.shields.io/badge/CPU%20Inference-%3C%20850ms-3B82F6?style=flat-square)](#-system-architecture)
+[![Macro F1](https://img.shields.io/badge/Validation%20Macro%20F1-0.82-059669?style=flat-square)](#benchmarks)
+[![Inference](https://img.shields.io/badge/CPU%20Inference-%3C%20850ms-3B82F6?style=flat-square)](#architecture)
 [![Backend](https://img.shields.io/badge/Backend-Python%203.14%20%7C%20Flask%203.1-black?style=flat-square)](https://flask.palletsprojects.com/)
 [![Engine](https://img.shields.io/badge/Engine-Keras%203%20%2B%20NumPy-D00000?style=flat-square)](https://keras.io/)
 
@@ -13,16 +15,9 @@
 
 ### Executive Overview
 
-Global agricultural waste exceeds **\$1.3 Trillion annually**, with more than one-third of all perishable food discarded before consumption. Manual sensory inspection (firmness, smell, visual glance) carries an estimated **40% error variance** and fails to detect internal microbial onset.
+[![Play the Veylo project video](docs/assets/veylo-demo-preview.png)](https://github.com/Faseeh206/Veylo-AI-Project/blob/main/brag.mp4)
 
-Most existing machine learning classifiers suffer from the **Binary Fallacy**: reducing food quality to a simplistic `Fresh` vs. `Rotten` classification. This misses the transitional degradation lifecycle where produce is still safe for consumption, retail markdowns, or culinary cooking.
-
-**Veylo** solves this by evaluating produce across an objective **5-Stage Biological Degradation Spectrum** in **under 850ms on local CPU** with zero external cloud API dependencies.
-
-```
-[ Stage 1: Fresh ] ───> [ Stage 2: Slightly Aged ] ───> [ Stage 3: Stale ] ───> [ Stage 4: Spoiled ] ───> [ Stage 5: Rotten ]
- Harvest Condition       Minor Moisture Loss            Wrinkled / Cook Now      Microbial Onset         Bio-Waste Hazard
-```
+<p align="center"><a href="https://github.com/Faseeh206/Veylo-AI-Project/blob/main/brag.mp4">▶ Watch the Veylo project video</a></p>
 
 ---
 
@@ -103,6 +98,8 @@ Some archived documents retain the project's earlier FreshSense name.
 
 ---
 
+<a id="benchmarks"></a>
+
 ## 📊 Machine Learning Benchmarks & Model Selection
 
 The classification engine was trained on a **6.41 GB curated multi-source corpus** merging three public agricultural datasets across **13 produce species**:
@@ -127,27 +124,11 @@ Unsupervised Agglomerative Clustering was employed on image feature embeddings t
 
 ---
 
+<a id="architecture"></a>
+
 ## 🏗 System Architecture & Data Pipeline
 
-```text
-[ USER CLIENT ]                    [ FLASK REST GATEWAY ]              [ MOBILENETV2 ENGINE ]
-HTML5 / CSS3 / ES6                      Python 3.14                      Keras 3 (NumPy CPU)
-       |                                      |                                  |
-       |--- 1. Drag & Drop Produce Image ---->|                                  |
-       |    (Multipart POST /predict)         |--- 2. Save to static/uploads/ -->|
-       |                                      |--- 3. Pillow Resize 128x128 ---->|
-       |                                      |--- 4. Normalize to [0.0, 1.0] -->|
-       |                                      |                                  |
-       |                                      |--- 5. Execute Forward Pass ----->|
-       |                                      |       (Silent verbose=0)         |
-       |                                      |<-- 6. Softmax Probabilities -----|
-       |                                      |                                  |
-       |                                      |--- 7. Append to history.json --->|
-       |<-- 8. JSON Prediction Response ------|                                  |
-       |    { class, confidence, probs }      |                                  |
-       v                                      v                                  v
-[ Animate Probability Bars & Status Badge ]   [ Persistent Scan History Updated ]
-```
+![System architecture: browser, Flask API, local inference, bundled weights and scan storage](docs/assets/system-architecture.svg)
 
 ### Key Engineering Decisions
 1. **Windows CRT Resilience (`Errno 22` Patch):** Model inference executes strictly with `verbose=0`, preventing Keras Progbar escape sequences from crashing non-interactive Windows C-runtime stdout handles.
@@ -158,28 +139,7 @@ HTML5 / CSS3 / ES6                      Python 3.14                      Keras 3
 
 ## 📂 Repository Layout
 
-```text
-Food Freshness Detection System/
-├── frontend/
-│   ├── index.html
-│   └── static/
-│       ├── brand/           # SVG logo, favicon, icon license
-│       ├── css/style.css
-│       ├── fonts/           # Self-hosted fonts and their licenses
-│       ├── js/app.js
-│       └── uploads/         # Generated locally; excluded from Git
-├── backend/
-│   ├── app.py
-│   ├── requirements.txt    # Runtime dependency versions
-│   ├── history.json        # Generated locally; excluded from Git
-│   └── models/
-│       └── MobileNetV2_best_model.keras  # Required; included
-├── docs/                   # PDFs and editable presentation
-├── Test Samples/           # Small set of demo images
-├── Food-Freshness AI Model/ # Research notebooks and evaluation outputs
-├── requirements.txt        # Uses backend/requirements.txt
-└── README.md
-```
+![Repository layout showing frontend, backend, the bundled model and supporting files](docs/assets/repository-layout.svg)
 
 ---
 
@@ -192,19 +152,6 @@ Food Freshness Detection System/
 | Product requirements PDF | [`docs/FreshSense_PRD.pdf`](docs/FreshSense_PRD.pdf) |
 | Editable presentation | [`docs/Food Freshness Detection.pptx`](docs/Food%20Freshness%20Detection.pptx) |
 | Research paper | [`docs/Food Freshness Detection Using Machine Learning Algorithms.pdf`](docs/Food%20Freshness%20Detection%20Using%20Machine%20Learning%20Algorithms.pdf) |
-
----
-
-## 👥 Engineering Team
-
-**Pak-Angels Mid-Program Hackathon • September 2026**
-
-| Member Name | Role | Technical Focus Areas |
-|---|---|---|
-| **Muhammad Faseeh (GL)** | **Group Leader** | Project Strategy, AI Pipeline Integration, Backend Flask Architecture & Execution Reliability |
-| **Umamah Ibreeq Zafar** | **Team Member** | Computer Vision Research, Dataset Preparation, Unsupervised Clustering & Benchmark Evaluation |
-| **Anumta Nadeem** | **Team Member** | UI/UX Design Engineering, CSS Design Systems, Interactive Animations & Client Testing |
-| **Zafar Aman Khattak** | **Team Member** | System Architecture, Diagnostic Audit Logging, Windows CRT Resilience & Quality Assurance |
 
 ---
 
