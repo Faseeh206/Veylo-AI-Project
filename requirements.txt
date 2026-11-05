@@ -1,0 +1,2 @@
+# Veylo runtime dependencies are maintained in one place.
+-r backend/requirements.txt

@@ -1,0 +1,49 @@
+# Python caches, temporary files, and local environments
+__pycache__/
+*.py[cod]
+*$py.class
+.venv/
+venv/
+env/
+ENV/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.ipynb_checkpoints/
+*.log
+*.tmp
+
+# Private configuration (example templates may be committed)
+.env
+.env.*
+!.env.example
+!.env.sample
+
+# Editor / OS files
+.idea/
+.vscode/
+.DS_Store
+Thumbs.db
+desktop.ini
+.streamlit/
+
+# Local AI-assistant tools and video-production working files
+/.agents/
+/skills-lock.json
+/brag-output/
+
+# Runtime scan data: created automatically when the app runs
+/backend/history.json
+/frontend/static/uploads/*
+!/frontend/static/uploads/.gitkeep
+
+# Research datasets and alternate trained weights are not needed to run the app.
+# IMPORTANT: keep backend/models/MobileNetV2_best_model.keras in the repository.
+/Food-Freshness AI Model/Output Files/augmented_dataset/
+/Food-Freshness AI Model/Output Files/Clustering/
+/Food-Freshness AI Model/Output Files/FoodFreshnessSample/
+/Food-Freshness AI Model/Output Files/dbscan_clustered_images/
+/Food-Freshness AI Model/Output Files/Agglomerative Model Data/
+/Food-Freshness AI Model/Output Files/K Means Model Data/
+/Food-Freshness AI Model/Output Files/kmeans_saved_models/
+/Food-Freshness AI Model/Output Files/agglomerative_saved_models/
