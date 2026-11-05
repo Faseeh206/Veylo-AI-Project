@@ -15,9 +15,9 @@
 
 ### Executive Overview
 
-[![Play the Veylo project video](docs/assets/veylo-demo-preview.png)](https://github.com/Faseeh206/Veylo-AI-Project/blob/main/brag.mp4)
+[![Veylo project video preview](docs/assets/veylo-demo-preview.png)](https://github.com/Faseeh206/Veylo-AI-Project/blob/main/brag.mp4)
 
-<p align="center"><a href="https://github.com/Faseeh206/Veylo-AI-Project/blob/main/brag.mp4">▶ Watch the Veylo project video</a></p>
+<p align="center"><a href="https://github.com/Faseeh206/Veylo-AI-Project/blob/main/brag.mp4">▶ Open the Veylo project video</a></p>
 
 ---
 
