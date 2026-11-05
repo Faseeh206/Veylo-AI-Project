@@ -1182,7 +1182,7 @@ h1,h2,h3,h4{font-family:var(--font-heading);font-weight:550;letter-spacing:-.045
 .hero{color:var(--ink);background:var(--paper)}.hero-bg-shapes{display:none}.pulse-dot{background:var(--fresh-color);box-shadow:none}
 .navbar{background:var(--paper);border-color:var(--line);backdrop-filter:none}.nav-inner{gap:24px}.nav-links{margin-left:auto}
 .nav-links a:hover{color:var(--ink)}.nav-logo-img,.footer-logo{object-fit:contain;border-radius:0;box-shadow:none}.nav-logo-img{width:38px;height:38px}.footer-logo{width:43px;height:43px}
-[data-theme=dark] .nav-logo-img,[data-theme=dark] .footer-logo{content:url('../brand/freshsense-mark-light.svg')}
+[data-theme=dark] img.nav-logo-img,[data-theme=dark] .footer-logo{content:url('../brand/freshsense-mark-light.svg')}
 .theme-switch{font-family:Onest,system-ui,sans-serif;font-size:11px;white-space:nowrap;color:var(--ink);border:1px solid var(--line);background:transparent;padding:8px 12px;border-radius:6px;cursor:pointer;flex-shrink:0;min-height:36px}
 .theme-switch:hover{background:var(--panel)}
 .section-detect,.section-scale,.section-about,.section-history{background:var(--paper)}.section-detect{background:var(--panel)}
@@ -1271,7 +1271,7 @@ a:focus-visible,button:focus-visible{outline:3px solid var(--green);outline-offs
 .navbar.is-over-hero{background:transparent;border-bottom-color:transparent;backdrop-filter:none}
 .navbar.is-over-hero .brand-title,.navbar.is-over-hero .nav-links a{color:#f5f5e9;text-shadow:0 1px 8px #00000088}
 .navbar.is-over-hero .nav-links a:hover{color:#fff}
-.navbar.is-over-hero .nav-logo-img{content:url('../brand/freshsense-mark-light.svg')}
+.navbar.is-over-hero img.nav-logo-img{content:url('../brand/freshsense-mark-light.svg')}
 @media(max-width:768px){.hero{padding-top:183px}}
 
 /* Keep the hero statistics visible at the top of laptop screens. */
@@ -1329,3 +1329,15 @@ html.theme-changing body,html.theme-changing .section,html.theme-changing .foote
 .hero-tag::after{content:"";position:absolute;inset:3px;border:1px solid #ffffff40;border-radius:inherit;pointer-events:none}
 [data-theme=dark] .hero-tag{background:linear-gradient(145deg,#ffffff18,#ffffff08);border-color:#ffffff38;box-shadow:inset 0 1px 0 #ffffff36,inset 0 -1px 0 #ffffff0d,0 6px 22px #00000020}
 @media(prefers-reduced-transparency:reduce){.hero-tag{background:var(--panel);backdrop-filter:none;-webkit-backdrop-filter:none}}
+
+/* Focus-leaf signature: a short unfurl within each three-second cycle. */
+.veylo-mark{display:block;flex:none;overflow:visible;color:#173b30}
+[data-theme=dark] .veylo-mark,.navbar.is-over-hero .veylo-mark{color:#d1dfa5}
+.veylo-mark g{transform-box:view-box;transform-origin:50% 50%;animation-duration:3s;animation-timing-function:var(--ease-out);animation-iteration-count:infinite}
+.veylo-leaf-upper{animation-name:veylo-leaf-unfurl-upper}
+.veylo-leaf-lower{animation-name:veylo-leaf-unfurl-lower}
+@keyframes veylo-leaf-unfurl-upper{0%,70%,100%{transform:translate(0,0) rotate(0)}80%{transform:translate(-12px,-10px) rotate(-16deg)}90%{transform:translate(3px,2px) rotate(3deg)}}
+@keyframes veylo-leaf-unfurl-lower{0%,70%,100%{transform:translate(0,0) rotate(0)}80%{transform:translate(12px,10px) rotate(16deg)}90%{transform:translate(-3px,-2px) rotate(-3deg)}}
+.nav-brand:focus-visible .veylo-mark g{animation-play-state:paused}
+@media(hover:hover) and (pointer:fine){.nav-brand:hover .veylo-mark g{animation-play-state:paused}}
+@media(prefers-reduced-motion:reduce){.veylo-mark g{animation:none!important;transform:none!important}}
