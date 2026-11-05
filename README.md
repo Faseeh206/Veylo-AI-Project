@@ -1,23 +1,22 @@
 <p align="center">
-  <img src="docs/assets/veylo-wordmark.svg" alt="Veylo — focus-leaf logo and Onest wordmark" width="420">
+  <img src="docs/assets/veylo-wordmark.svg?v=2" alt="Veylo — focus-leaf logo and Onest wordmark" width="420">
 </p>
 
-**Automated Produce Freshness Diagnostics via Deep Convolutional Neural Networks**  
-*Pak-Angels Mid-Program Hackathon • Applied AI & Computer Vision Track • Production MVP*
+<p align="center"><strong>Automated Produce Freshness Diagnostics via Deep Convolutional Neural Networks.</strong></p>
 
-[![Model](https://img.shields.io/badge/Model-MobileNetV2%20(11.5%20MB)-10B981?style=flat-square)](https://keras.io/api/applications/mobilenet/)
-[![Macro F1](https://img.shields.io/badge/Validation%20Macro%20F1-0.82-059669?style=flat-square)](#benchmarks)
-[![Inference](https://img.shields.io/badge/CPU%20Inference-%3C%20850ms-3B82F6?style=flat-square)](#architecture)
-[![Backend](https://img.shields.io/badge/Backend-Python%203.14%20%7C%20Flask%203.1-black?style=flat-square)](https://flask.palletsprojects.com/)
-[![Engine](https://img.shields.io/badge/Engine-Keras%203%20%2B%20NumPy-D00000?style=flat-square)](https://keras.io/)
+<p align="center">
+  <a href="https://keras.io/api/applications/mobilenet/"><img src="https://img.shields.io/badge/Model-MobileNetV2%20(11.5%20MB)-10B981?style=flat-square" alt="Model"></a>
+  <a href="#benchmarks"><img src="https://img.shields.io/badge/Validation%20Macro%20F1-0.82-059669?style=flat-square" alt="Macro F1"></a>
+  <a href="#architecture"><img src="https://img.shields.io/badge/CPU%20Inference-%3C%20850ms-3B82F6?style=flat-square" alt="Inference"></a>
+  <a href="https://flask.palletsprojects.com/"><img src="https://img.shields.io/badge/Backend-Python%203.14%20%7C%20Flask%203.1-black?style=flat-square" alt="Backend"></a>
+  <a href="https://keras.io/"><img src="https://img.shields.io/badge/Engine-Keras%203%20%2B%20NumPy-D00000?style=flat-square" alt="Engine"></a>
+</p>
 
 ---
 
-### Executive Overview
+## Watch Veylo
 
-[![Veylo project video preview](docs/assets/veylo-demo-preview.png)](https://github.com/Faseeh206/Veylo-AI-Project/blob/main/brag.mp4)
-
-<p align="center"><a href="https://github.com/Faseeh206/Veylo-AI-Project/blob/main/brag.mp4">▶ Open the Veylo project video</a></p>
+https://github.com/user-attachments/assets/ca7b1de3-77ea-48e0-ad86-3341a9691965
 
 ---
 
@@ -139,7 +138,29 @@ Unsupervised Agglomerative Clustering was employed on image feature embeddings t
 
 ## 📂 Repository Layout
 
-![Repository layout showing frontend, backend, the bundled model and supporting files](docs/assets/repository-layout.svg)
+```text
+Veylo-AI-Project/
+├── frontend/
+│   ├── index.html
+│   └── static/
+│       ├── brand/           # SVG logo, favicon, icon license
+│       ├── css/style.css
+│       ├── fonts/           # Self-hosted fonts and their licenses
+│       ├── js/app.js
+│       └── uploads/         # Generated locally; excluded from Git
+├── backend/
+│   ├── app.py
+│   ├── requirements.txt    # Runtime dependency versions
+│   ├── history.json        # Generated locally; excluded from Git
+│   └── models/
+│       └── MobileNetV2_best_model.keras  # Required; included
+├── docs/                   # PDFs and editable presentation
+├── Test Samples/           # Small set of demo images
+├── Food-Freshness AI Model/ # Research notebooks and evaluation outputs
+├── brag.mp4                # Project demo video
+├── requirements.txt        # Uses backend/requirements.txt
+└── README.md
+```
 
 ---
 
