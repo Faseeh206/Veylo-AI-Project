@@ -1,3 +1,4 @@
+import { runThemeTransition } from "./theme-transition.js";
 /* ================================================================
    FreshSense — Client Logic
    Handles drag-and-drop upload, AJAX prediction, animated probability bars,
@@ -37,17 +38,23 @@
         themeSwitch.title = dark ? "Switch to light theme" : "Switch to dark theme";
         themeSwitch.setAttribute("aria-label", dark ? "Switch to light theme" : "Switch to dark theme");
     }
+    let requestedTheme = document.documentElement.dataset.theme;
     themeSwitch.addEventListener("click", function () {
-        const theme = document.documentElement.dataset.theme === "dark" ? "light" : "dark";
-        document.documentElement.dataset.theme = theme;
-        try { localStorage.setItem("freshsense-theme", theme); } catch (_) {}
-        syncThemeButton();
+        const theme = requestedTheme === "dark" ? "light" : "dark";
+        requestedTheme = theme;
+        const box = themeSwitch.getBoundingClientRect();
+        runThemeTransition(function () {
+            document.documentElement.dataset.theme = theme;
+            try { localStorage.setItem("freshsense-theme", theme); } catch (_) {}
+            syncThemeButton();
+        }, { next: theme, x: box.left + box.width / 2, y: box.top + box.height / 2,
+             reduced: matchMedia("(prefers-reduced-motion: reduce)").matches });
     });
     syncThemeButton();
     const systemTheme = matchMedia("(prefers-color-scheme: dark)");
     systemTheme.addEventListener("change", function (event) {
         try { if (localStorage.getItem("freshsense-theme")) return; } catch (_) {}
-        document.documentElement.dataset.theme = event.matches ? "dark" : "light"; syncThemeButton();
+        document.documentElement.dataset.theme = event.matches ? "dark" : "light"; requestedTheme = document.documentElement.dataset.theme; syncThemeButton();
     });
 
     // A single fixed video continues through every section without restarting.

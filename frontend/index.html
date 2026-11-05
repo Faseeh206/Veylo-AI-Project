@@ -10,7 +10,7 @@
 <link rel="preload" href="/static/fonts/onest-latin-variable.woff2" as="font" type="font/woff2" crossorigin>
 <script>try{document.documentElement.dataset.theme=localStorage.getItem('freshsense-theme')||(matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light')}catch(e){}</script>
 </head>
-<body>
+<body id="top">
     <div class="page-video-backdrop" id="pageVideoBackdrop" aria-hidden="true">
         <video class="hero-video" id="heroVideo" muted loop playsinline preload="none" aria-hidden="true" tabindex="-1"
             data-src="https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260622_202655_a7f5aca0-2f80-4bc9-bcb5-96ac95662003.mp4"></video>
@@ -363,7 +363,8 @@
     </section>
 
     <!-- Footer -->
-    <footer class="footer">
+    <footer class="footer veylo-halftone" id="veyloFooter">
+        <canvas id="footerDots" aria-hidden="true"></canvas>
         <div class="container footer-content">
             <div class="footer-left">
                 <img src="/static/brand/freshsense-mark.svg" alt="Veylo" class="footer-logo">
@@ -372,6 +373,10 @@
                     <div class="footer-sub">Deep Learning Food Spoilage Diagnostic Platform</div>
                 </div>
             </div>
+            <nav class="footer-navigation" aria-label="Footer">
+                <a href="#detect">Detect freshness</a><a href="#scale">Quality scale</a>
+                <a href="#about">Architecture</a><a href="#history">Scan history</a>
+            </nav>
             <div class="footer-right">
                 <span>MobileNetV2</span> &bull; 
                 <span>Keras 3</span> &bull; 
@@ -379,8 +384,10 @@
                 <span>Agglomerative Clustering</span>
             </div>
         </div>
+        <div class="container footer-bottom"><span>© Veylo · Computer vision for food freshness</span><a href="#top">Back to top ↑</a></div>
     </footer>
 
-    <script src="/static/js/app.js"></script>
+    <script type="module" src="/static/js/app.js"></script>
+    <script defer src="/static/js/halftone-footer.js"></script>
 </body>
 </html>
