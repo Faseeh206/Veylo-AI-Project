@@ -274,6 +274,8 @@ Veylo-AI-Project/
   </picture>
 </p>
 
-<div align="center">
-  <sub>Veylo • Automated Produce Diagnostics via Computer Vision • September 2026</sub>
-</div>
+<p align="center">
+  <img src="docs/assets/veylo-wordmark.svg?v=2" alt="Veylo — focus-leaf logo and Onest wordmark" width="180">
+  <br>
+  <sub>Automated Produce Diagnostics via Computer Vision • September 2026</sub>
+</p>
