@@ -5,15 +5,15 @@
 <p align="center"><strong>Automated Produce Freshness Diagnostics via Deep Convolutional Neural Networks.</strong></p>
 
 <p align="center">
-  <a href="https://www.python.org/"><img src="https://img.shields.io/badge/Python-183429?style=flat&logo=python&logoColor=FFD43B" height="34" alt="Python" /></a>
+  <a href="https://www.python.org/"><img src="https://img.shields.io/badge/Python-3776AB?style=flat&logo=python&logoColor=FFD43B" width="127" height="38" alt="Python" /></a>
   &nbsp;
-  <a href="https://flask.palletsprojects.com/"><img src="https://img.shields.io/badge/Flask-183429?style=flat&logo=flask&logoColor=FFFFFF" height="34" alt="Flask" /></a>
+  <a href="https://flask.palletsprojects.com/"><img src="https://img.shields.io/badge/Flask-2B3035?style=flat&logo=flask&logoColor=FFFFFF" width="108" height="38" alt="Flask" /></a>
   &nbsp;
-  <a href="https://keras.io/"><img src="https://img.shields.io/badge/Keras-183429?style=flat&logo=keras&logoColor=D00000" height="34" alt="Keras" /></a>
+  <a href="https://keras.io/"><img src="https://img.shields.io/badge/Keras-D00000?style=flat&logo=keras&logoColor=FFFFFF" width="112" height="38" alt="Keras" /></a>
   &nbsp;
-  <a href="https://numpy.org/"><img src="https://img.shields.io/badge/NumPy-183429?style=flat&logo=numpy&logoColor=4DABCF" height="34" alt="NumPy" /></a>
+  <a href="https://numpy.org/"><img src="https://img.shields.io/badge/NumPy-013243?style=flat&logo=numpy&logoColor=4DABCF" width="127" height="38" alt="NumPy" /></a>
   &nbsp;
-  <a href="https://keras.io/api/applications/mobilenet/"><img src="https://img.shields.io/badge/MobileNetV2-183429?style=flat&logo=keras&logoColor=43D69A" height="34" alt="MobileNetV2" /></a>
+  <a href="https://www.tensorflow.org/api_docs/python/tf/keras/applications/MobileNetV2"><img src="https://img.shields.io/badge/MobileNetV2-E37400?style=flat&logo=tensorflow&logoColor=FFFFFF" width="184" height="38" alt="MobileNetV2" /></a>
 </p>
 
 <p align="center">
