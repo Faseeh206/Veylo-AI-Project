@@ -5,15 +5,15 @@
 <p align="center"><strong>Automated Produce Freshness Diagnostics via Deep Convolutional Neural Networks.</strong></p>
 
 <p align="center">
-  <a href="https://www.python.org/"><img src="https://img.shields.io/badge/Python-3776AB?style=flat&logo=python&logoColor=FFD43B" width="127" height="38" alt="Python" /></a>
+  <a href="https://www.python.org/"><img src="https://img.shields.io/badge/Python%203.12%2B-3776AB?style=flat&logo=python&logoColor=FFD43B" width="144" height="28" alt="Python 3.12+" /></a>
   &nbsp;
-  <a href="https://flask.palletsprojects.com/"><img src="https://img.shields.io/badge/Flask-2B3035?style=flat&logo=flask&logoColor=FFFFFF" width="108" height="38" alt="Flask" /></a>
+  <a href="https://flask.palletsprojects.com/"><img src="https://img.shields.io/badge/Flask%203.1.3-2B3035?style=flat&logo=flask&logoColor=FFFFFF" width="125" height="28" alt="Flask 3.1.3" /></a>
   &nbsp;
-  <a href="https://keras.io/"><img src="https://img.shields.io/badge/Keras-D00000?style=flat&logo=keras&logoColor=FFFFFF" width="112" height="38" alt="Keras" /></a>
+  <a href="https://keras.io/"><img src="https://img.shields.io/badge/Keras%203.15.1-D00000?style=flat&logo=keras&logoColor=FFFFFF" width="139" height="28" alt="Keras 3.15.1" /></a>
   &nbsp;
-  <a href="https://numpy.org/"><img src="https://img.shields.io/badge/NumPy-013243?style=flat&logo=numpy&logoColor=4DABCF" width="127" height="38" alt="NumPy" /></a>
+  <a href="https://numpy.org/"><img src="https://img.shields.io/badge/NumPy%202.5.4-013243?style=flat&logo=numpy&logoColor=4DABCF" width="139" height="28" alt="NumPy 2.5.4" /></a>
   &nbsp;
-  <a href="https://www.tensorflow.org/api_docs/python/tf/keras/applications/MobileNetV2"><img src="https://img.shields.io/badge/MobileNetV2-E37400?style=flat&logo=tensorflow&logoColor=FFFFFF" width="184" height="38" alt="MobileNetV2" /></a>
+  <a href="https://www.tensorflow.org/api_docs/python/tf/keras/applications/MobileNetV2"><img src="https://img.shields.io/badge/MobileNet%20v2-E37400?style=flat&logo=tensorflow&logoColor=FFFFFF" width="139" height="28" alt="MobileNet v2" /></a>
 </p>
 
 <p align="center">
@@ -23,7 +23,8 @@
   <a href="#benchmarks">Benchmarks</a> &nbsp;·&nbsp;
   <a href="#architecture">Architecture</a> &nbsp;·&nbsp;
   <a href="#techstack">TechStack</a> &nbsp;·&nbsp;
-  <a href="#api-endpoints">API</a>
+  <a href="#api-endpoints">API</a> &nbsp;·&nbsp;
+  <a href="LICENSE">MIT licensed · Open source</a>
 </p>
 
 <br>
