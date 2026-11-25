@@ -1,39 +1,79 @@
 <p align="center">
-  <img src="docs/assets/veylo-wordmark.svg?v=2" alt="Veylo — focus-leaf logo and Onest wordmark" width="420">
+  <img src="docs/assets/veylo-wordmark.svg?v=2" alt="Veylo — focus-leaf logo and Onest wordmark" width="320">
 </p>
 
 <p align="center"><strong>Automated Produce Freshness Diagnostics via Deep Convolutional Neural Networks.</strong></p>
 
 <p align="center">
-  <a href="https://keras.io/api/applications/mobilenet/"><img src="https://img.shields.io/badge/Model-MobileNetV2%20(11.5%20MB)-10B981?style=flat-square" alt="Model"></a>
-  <a href="#benchmarks"><img src="https://img.shields.io/badge/Validation%20Macro%20F1-0.82-059669?style=flat-square" alt="Macro F1"></a>
-  <a href="#architecture"><img src="https://img.shields.io/badge/CPU%20Inference-%3C%20850ms-3B82F6?style=flat-square" alt="Inference"></a>
-  <a href="https://flask.palletsprojects.com/"><img src="https://img.shields.io/badge/Backend-Python%203.14%20%7C%20Flask%203.1-black?style=flat-square" alt="Backend"></a>
-  <a href="https://keras.io/"><img src="https://img.shields.io/badge/Engine-Keras%203%20%2B%20NumPy-D00000?style=flat-square" alt="Engine"></a>
+  <a href="https://www.python.org/"><img src="https://img.shields.io/badge/Python-183429?style=flat&logo=python&logoColor=FFD43B" height="34" alt="Python" /></a>
+  &nbsp;
+  <a href="https://flask.palletsprojects.com/"><img src="https://img.shields.io/badge/Flask-183429?style=flat&logo=flask&logoColor=FFFFFF" height="34" alt="Flask" /></a>
+  &nbsp;
+  <a href="https://keras.io/"><img src="https://img.shields.io/badge/Keras-183429?style=flat&logo=keras&logoColor=D00000" height="34" alt="Keras" /></a>
+  &nbsp;
+  <a href="https://numpy.org/"><img src="https://img.shields.io/badge/NumPy-183429?style=flat&logo=numpy&logoColor=4DABCF" height="34" alt="NumPy" /></a>
+  &nbsp;
+  <a href="https://keras.io/api/applications/mobilenet/"><img src="https://img.shields.io/badge/MobileNetV2-183429?style=flat&logo=keras&logoColor=43D69A" height="34" alt="MobileNetV2" /></a>
 </p>
 
----
+<p align="center">
+  <a href="#features">Features</a> &nbsp;·&nbsp;
+  <a href="#quick-start">Quick Start</a> &nbsp;·&nbsp;
+  <a href="#freshness-scale">Freshness Scale</a> &nbsp;·&nbsp;
+  <a href="#benchmarks">Benchmarks</a> &nbsp;·&nbsp;
+  <a href="#architecture">Architecture</a> &nbsp;·&nbsp;
+  <a href="#techstack">TechStack</a> &nbsp;·&nbsp;
+  <a href="#api-endpoints">API</a>
+</p>
 
-## Watch Veylo
+<br>
+
+<p align="center">
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="docs/assets/section-divider-dark.svg">
+    <source media="(prefers-color-scheme: light)" srcset="docs/assets/section-divider-light.svg">
+    <img src="docs/assets/section-divider-light.svg" alt="" width="1000" height="2">
+  </picture>
+</p>
+
+## 🎬 Watch Veylo
 
 https://github.com/user-attachments/assets/ca7b1de3-77ea-48e0-ad86-3341a9691965
 
----
+<br>
 
-## ⚡ Quick Start (Run Locally)
+<p align="center">
+  <a id="features"></a>
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="docs/assets/section-divider-dark.svg">
+    <source media="(prefers-color-scheme: light)" srcset="docs/assets/section-divider-light.svg">
+    <img src="docs/assets/section-divider-light.svg" alt="" width="1000" height="2">
+  </picture>
+</p>
 
-### 1. Install Python
+## ✨ Features
 
-Use **64-bit Python 3.12 or newer**. The clean-install check was performed with **Python 3.14 on Windows**. On Windows, select **Add Python to PATH** during installation.
+- **Drag-and-drop produce analysis:** Upload `.jpg`, `.jpeg`, `.png`, or `.webp` food photos for local MobileNetV2 inference (`<850ms` on CPU).
+- **Five-stage quality breakdown:** Returns the predicted freshness class, top confidence percentage, guidance text, and probability scores across all 5 stages.
+- **Local scan history:** Automatically saves predictions to `backend/history.json` with image previews, single-record deletion, and one-click clear all.
+- **Zero-dependency web UI:** Adaptive light/dark theme toggle, responsive layout, and reduced-motion support without Node.js or database setup.
 
-### 2. Download the project
+<br>
 
-Clone this repository, or choose **Code → Download ZIP** on GitHub and extract it. Open a terminal in the extracted project folder (the folder containing this README).
+<p align="center">
+  <a id="quick-start"></a>
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="docs/assets/section-divider-dark.svg">
+    <source media="(prefers-color-scheme: light)" srcset="docs/assets/section-divider-light.svg">
+    <img src="docs/assets/section-divider-light.svg" alt="" width="1000" height="2">
+  </picture>
+</p>
 
-### 3. Create a local environment and install dependencies
+## ⚡ Quick Start
 
-**Windows (PowerShell or Command Prompt):**
+**Prerequisite:** 64-bit **Python 3.12+** (tested on Python 3.14 Windows). The trained model (`backend/models/MobileNetV2_best_model.keras`) is bundled—no TensorFlow setup, Node build, API key, or external DB is needed.
 
+**Windows (PowerShell):**
 ```powershell
 python -m venv .venv
 .\.venv\Scripts\python.exe -m pip install -r requirements.txt
@@ -41,127 +81,197 @@ python -m venv .venv
 ```
 
 **macOS / Linux:**
-
 ```bash
 python3 -m venv .venv
 .venv/bin/python -m pip install -r requirements.txt
 .venv/bin/python backend/app.py
 ```
 
-Activation is optional; these commands use the environment directly. On Linux, install your distribution's `python3-venv` package if Python reports that `venv` is unavailable. macOS/Linux commands are provided for convenience; the clean-install test was run on Windows.
+Open **[http://127.0.0.1:5000](http://127.0.0.1:5000)** and try any image from [`Test Samples/`](Test%20Samples/). `frontend/static/uploads/` and `backend/history.json` are created automatically on first run.
 
-### 4. Open Veylo
+<br>
 
-Open **[http://127.0.0.1:5000](http://127.0.0.1:5000)**. Keep the terminal open while using the app. Stop it with **Ctrl+C**.
-
-Use a photo from [`Test Samples/`](Test%20Samples/) for a first scan. Upload it and wait for the prediction; the scan then appears in Scan History. Each record has its own delete button, and Clear All Records remains available.
-
-**Included:** the actual MobileNetV2 weights at `backend/models/MobileNetV2_best_model.keras` (approximately 11.6 MB). No training, TensorFlow install, npm build, API key, account, or database setup is required. Do not exclude this model file from your GitHub upload.
-
-**Created automatically:** `frontend/static/uploads/` and `backend/history.json`. Each new checkout starts with an empty history.
-
-An internet connection is needed to install Python dependencies and stream the decorative background video. Image analysis runs locally; the app remains usable with its static background when the video is unavailable.
-
-**Troubleshooting:**
-
-- **`python` is not recognized:** reopen your terminal after installing Python with its PATH option enabled.
-- **Missing module:** install requirements using the same environment's Python shown above.
-- **Model file not found:** confirm that `backend/models/MobileNetV2_best_model.keras` is present in the downloaded repository.
-- **Port 5000 already in use:** stop an earlier copy of the app before starting another.
-- **Dependency download fails:** verify Python is 64-bit and version 3.12 or newer, then retry the installation.
-
----
+<p align="center">
+  <a id="freshness-scale"></a>
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="docs/assets/section-divider-dark.svg">
+    <source media="(prefers-color-scheme: light)" srcset="docs/assets/section-divider-light.svg">
+    <img src="docs/assets/section-divider-light.svg" alt="" width="1000" height="2">
+  </picture>
+</p>
 
 ## 🔬 The 5-Stage Freshness Spectrum
 
-| Stage | UI Badge | Biological & Surface Indicators | Actionable Recommendation |
+| Stage | Label | Visual Indicators | Recommendation |
 |:---:|:---:|---|---|
-| **1** | `🟢 Fresh` | Intact cellular turgor, uniform pigmentation, zero superficial pitting or mold. | **Prime consumption.** Ideal for raw eating, salads, or extended refrigeration. |
-| **2** | `🟡 Slightly Aged` | Minor water loss, slight skin gloss dullness, micro-softening at extremities. | **Safe for consumption.** Recommend use within 24–48 hours; salads or cooking. |
-| **3** | `🟠 Stale` | Pronounced cellular collapse, wrinkling, moisture loss, aroma depletion. | **Culinary degradation.** Best cooked, stewed, or pureed; avoid raw salad intake. |
-| **4** | `🔴 Spoiled` | Focal discoloration, early microbial mycelia, pericarp softening, off-odors. | **Unfit for consumption.** High risk of foodborne pathogens; discard immediately. |
-| **5** | `🟣 Rotten` | Advanced mycotoxin colonization, structural collapse, foul decomposition gas. | **Hazardous bio-waste.** Discard into sealed organic compost or disposal. |
+| **1** | `🟢 Fresh` | Firm texture, uniform color, no blemishes or mold. | Safe to consume fresh or store refrigerated. |
+| **2** | `🟡 Slightly Aged` | Minor moisture loss, slight dullness or soft spots. | Safe to eat; best used within 24–48 hours. |
+| **3** | `🟠 Stale` | Visible wrinkling, softening, and color fading. | Declining quality; best cooked or inspected closely. |
+| **4** | `🔴 Spoiled` | Dark spots, early mold growth, noticeable decay. | Not recommended for consumption; discard. |
+| **5** | `🟣 Rotten` | Severe breakdown, heavy mold, structural collapse. | Discard immediately. |
 
----
+<br>
 
-<a id="benchmarks"></a>
+<p align="center">
+  <a id="benchmarks"></a>
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="docs/assets/section-divider-dark.svg">
+    <source media="(prefers-color-scheme: light)" srcset="docs/assets/section-divider-light.svg">
+    <img src="docs/assets/section-divider-light.svg" alt="" width="1000" height="2">
+  </picture>
+</p>
 
-## 📊 Machine Learning Benchmarks & Model Selection
+## 📊 Machine Learning Benchmarks
 
-The classification engine was trained on a **6.41 GB curated multi-source corpus** merging three public agricultural datasets across **13 produce species**:
-* **Fruits:** Apple, Banana, Mango, Orange, Strawberry
-* **Vegetables:** Bell Pepper, Bitter Gourd, Capsicum, Carrot, Cucumber, Okra, Potato, Tomato
+Trained on a **6.41 GB multi-source dataset** spanning **13 produce species** (5 fruits: Apple, Banana, Mango, Orange, Strawberry; 8 vegetables: Bell Pepper, Bitter Gourd, Capsicum, Carrot, Cucumber, Okra, Potato, Tomato) using Agglomerative Clustering & K-Means feature boundaries across 8 CNNs:
 
-### 8-Architecture Benchmark Evaluation
-
-Unsupervised Agglomerative Clustering was employed on image feature embeddings to derive objective biological boundaries across 8 candidate deep learning architectures:
-
-| Neural Architecture | Parameters | K-Means F1 | Agglom Acc | Agglom Macro F1 | Production Suitability |
+| Architecture | Parameters | K-Means F1 | Agglom Acc | Agglom Macro F1 | Summary |
 |---|:---:|:---:|:---:|:---:|---|
-| **AlexNet** | 60.0M | 0.70 | 0.84 | 0.83 | ⚠️ Weights stored as 134-byte Git LFS stub |
-| **MobileNetV2 (Selected)** | **3.4M** | **0.75** | **0.82** | **0.82** | ✅ **Production Champion (11.5 MB binary, &lt;850ms CPU)** |
-| **DenseNet121** | 8.0M | 0.74 | 0.83 | 0.82 | 2.4x larger parameter footprint |
-| **Xception** | 22.8M | 0.70 | 0.81 | 0.80 | High memory consumption on edge CPU |
-| **InceptionV3** | 23.8M | 0.72 | 0.74 | 0.73 | Sub-optimal F1 performance |
-| **VGG16 / VGG19** | 138M–143M | 0.65 | 0.68 | 0.55 | Severe parameter bloat, poor generalization |
-| **ResNet50** | 25.6M | 0.23 | 0.42 | 0.34 | Underperformed on subtle transitional textures |
+| **MobileNetV2 (Selected)** | **3.4M** | **0.75** | **0.82** | **0.82** | ✅ **Selected — 11.5 MB weights, &lt;850ms CPU inference** |
+| **DenseNet121** | 8.0M | 0.74 | 0.83 | 0.82 | Similar accuracy with 2.4× more parameters |
+| **AlexNet** | 60.0M | 0.70 | 0.84 | 0.83 | Heavyweight architecture (60M parameters) |
+| **Xception** | 22.8M | 0.70 | 0.81 | 0.80 | Higher CPU memory footprint |
+| **InceptionV3** | 23.8M | 0.72 | 0.74 | 0.73 | Lower F1 score |
+| **VGG16 / VGG19** | 138M–143M | 0.65 | 0.68 | 0.55 | Excessive model size & weak generalization |
+| **ResNet50** | 25.6M | 0.23 | 0.42 | 0.34 | Underperformed on transitional freshness stages |
 
-> **Why MobileNetV2?** MobileNetV2 matches the macro F1 precision of DenseNet121 while requiring over **10x fewer parameters** than AlexNet/VGG. Inverted residual blocks with linear bottlenecks allow instantaneous cold start (&lt;3.5s) and thread-safe CPU execution.
+> **Why MobileNetV2?** It matches DenseNet121's macro F1 (`0.82`) with **10× fewer parameters** than AlexNet/VGG, giving fast cold start (`<3.5s`) and lightweight local CPU inference.
 
----
+<br>
 
-<a id="architecture"></a>
+<p align="center">
+  <a id="architecture"></a>
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="docs/assets/section-divider-dark.svg">
+    <source media="(prefers-color-scheme: light)" srcset="docs/assets/section-divider-light.svg">
+    <img src="docs/assets/section-divider-light.svg" alt="" width="1000" height="2">
+  </picture>
+</p>
 
-## 🏗 System Architecture & Data Pipeline
+## 🏗 System Architecture
 
 ![System architecture: browser, Flask API, local inference, bundled weights and scan storage](docs/assets/system-architecture.svg)
 
-### Key Engineering Decisions
-1. **Windows CRT Resilience (`Errno 22` Patch):** Model inference executes strictly with `verbose=0`, preventing Keras Progbar escape sequences from crashing non-interactive Windows C-runtime stdout handles.
-2. **Deterministic Preprocessing:** Images are converted to 3-channel RGB, bicubic interpolated to `128 × 128`, normalized to `float32` in `[0.0, 1.0]`, and packaged with batch dimension `(1, 128, 128, 3)`.
-3. **Zero-Framework Client:** The frontend uses pure semantic HTML5, CSS custom properties, and vanilla ES6 JavaScript—achieving sub-100ms load times with zero npm dependencies.
+- **Deterministic preprocessing:** Images convert to 3-channel RGB, resize to `128 × 128`, normalize to `float32` `[0.0, 1.0]`, and run with `verbose=0` for clean cross-platform execution.
+- **Local persistence:** Atomic writes (`tempfile` + `os.replace`) keep `backend/history.json` corruption-free while managing uploaded assets under `frontend/static/uploads/`.
 
----
+<br>
+
+<p align="center">
+  <a id="techstack"></a>
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="docs/assets/section-divider-dark.svg">
+    <source media="(prefers-color-scheme: light)" srcset="docs/assets/section-divider-light.svg">
+    <img src="docs/assets/section-divider-light.svg" alt="" width="1000" height="2">
+  </picture>
+</p>
+
+## 🧱 TechStack
+
+| Layer | Technologies |
+| :--- | :--- |
+| **Frontend** | <a href="https://developer.mozilla.org/en-US/docs/Web/HTML"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/html5/html5-original.svg" width="18" height="18" align="absmiddle" alt="HTML5" />&nbsp;HTML5</a> &nbsp;·&nbsp; <a href="https://developer.mozilla.org/en-US/docs/Web/CSS"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/css3/css3-original.svg" width="18" height="18" align="absmiddle" alt="CSS3" />&nbsp;CSS3</a> &nbsp;·&nbsp; <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/javascript/javascript-original.svg" width="18" height="18" align="absmiddle" alt="JavaScript" />&nbsp;JavaScript (ES6)</a> |
+| **Backend & API** | <a href="https://www.python.org/"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/python/python-original.svg" width="18" height="18" align="absmiddle" alt="Python" />&nbsp;Python 3.12+</a> &nbsp;·&nbsp; <a href="https://flask.palletsprojects.com/"><img src="https://cdn.simpleicons.org/flask/43D69A" width="18" height="18" align="absmiddle" alt="Flask" />&nbsp;Flask 3.1</a> |
+| **Inference & Imaging** | <a href="https://keras.io/"><img src="https://cdn.simpleicons.org/keras/D00000" width="18" height="18" align="absmiddle" alt="Keras" />&nbsp;Keras 3</a> &nbsp;·&nbsp; <a href="https://keras.io/api/applications/mobilenet/"><img src="https://cdn.simpleicons.org/keras/43D69A" width="18" height="18" align="absmiddle" alt="MobileNetV2" />&nbsp;MobileNetV2</a> &nbsp;·&nbsp; <a href="https://numpy.org/"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/numpy/numpy-original.svg" width="18" height="18" align="absmiddle" alt="NumPy" />&nbsp;NumPy</a> &nbsp;·&nbsp; <a href="https://python-pillow.org/"><img src="https://cdn.simpleicons.org/python/3776AB" width="18" height="18" align="absmiddle" alt="Pillow" />&nbsp;Pillow</a> &nbsp;·&nbsp; <a href="https://scipy.org/"><img src="https://cdn.simpleicons.org/scipy/8CAAE6" width="18" height="18" align="absmiddle" alt="SciPy" />&nbsp;SciPy</a> &nbsp;·&nbsp; <a href="https://jax.readthedocs.io/"><img src="https://raw.githubusercontent.com/jax-ml/jax/main/docs/_static/jax_logo_250px.png" height="16" align="absmiddle" alt="JAX" />&nbsp;JAX</a> |
+| **Training & Research** | <a href="https://www.tensorflow.org/"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/tensorflow/tensorflow-original.svg" width="18" height="18" align="absmiddle" alt="TensorFlow" />&nbsp;TensorFlow</a> &nbsp;·&nbsp; <a href="https://scikit-learn.org/"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/scikitlearn/scikitlearn-original.svg" width="18" height="18" align="absmiddle" alt="scikit-learn" />&nbsp;scikit-learn</a> &nbsp;·&nbsp; <a href="https://opencv.org/"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/opencv/opencv-original.svg" width="18" height="18" align="absmiddle" alt="OpenCV" />&nbsp;OpenCV</a> &nbsp;·&nbsp; <a href="https://pandas.pydata.org/"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/pandas/pandas-original.svg" width="18" height="18" align="absmiddle" alt="Pandas" />&nbsp;Pandas</a> &nbsp;·&nbsp; <a href="https://matplotlib.org/"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/matplotlib/matplotlib-original.svg" width="18" height="18" align="absmiddle" alt="Matplotlib" />&nbsp;Matplotlib</a> |
+| **Storage** | <a href="https://www.json.org/"><img src="https://cdn.simpleicons.org/json/F59E0B" width="18" height="18" align="absmiddle" alt="JSON" />&nbsp;Local JSON (`history.json`)</a> |
+
+<br>
+
+<p align="center">
+  <a id="api-endpoints"></a>
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="docs/assets/section-divider-dark.svg">
+    <source media="(prefers-color-scheme: light)" srcset="docs/assets/section-divider-light.svg">
+    <img src="docs/assets/section-divider-light.svg" alt="" width="1000" height="2">
+  </picture>
+</p>
+
+## 🔌 API Endpoints
+
+| Method | Endpoint | Purpose |
+| :--- | :--- | :--- |
+| `GET` | `/` | Serves the web UI (`frontend/index.html`) |
+| `POST` | `/predict` | Accepts `multipart/form-data` (`file`: `.jpg`, `.jpeg`, `.png`, `.webp`) and returns prediction, confidence, and 5-class probabilities |
+| `GET` | `/history` | Returns saved scan records from `backend/history.json` |
+| `DELETE` | `/history/<record_id>` | Deletes a single scan record and removes its orphaned upload |
+| `DELETE` | `/history` | Clears all scan history and uploaded files |
+
+<br>
+
+<p align="center">
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="docs/assets/section-divider-dark.svg">
+    <source media="(prefers-color-scheme: light)" srcset="docs/assets/section-divider-light.svg">
+    <img src="docs/assets/section-divider-light.svg" alt="" width="1000" height="2">
+  </picture>
+</p>
 
 ## 📂 Repository Layout
 
 ```text
 Veylo-AI-Project/
-├── frontend/
-│   ├── index.html
-│   └── static/
-│       ├── brand/           # SVG logo, favicon, icon license
-│       ├── css/style.css
-│       ├── fonts/           # Self-hosted fonts and their licenses
-│       ├── js/app.js
-│       └── uploads/         # Generated locally; excluded from Git
+├── frontend/                  # Static UI (HTML, CSS, JS, brand assets & fonts)
 ├── backend/
-│   ├── app.py
-│   ├── requirements.txt    # Runtime dependency versions
-│   ├── history.json        # Generated locally; excluded from Git
+│   ├── app.py                 # Flask server & inference pipeline
+│   ├── requirements.txt       # Runtime dependencies
 │   └── models/
-│       └── MobileNetV2_best_model.keras  # Required; included
-├── docs/                   # PDFs and editable presentation
-├── Test Samples/           # Small set of demo images
-├── Food-Freshness AI Model/ # Research notebooks and evaluation outputs
-├── brag.mp4                # Project demo video
-├── requirements.txt        # Uses backend/requirements.txt
-└── README.md
+│       └── MobileNetV2_best_model.keras
+├── docs/                      # Research paper, PRD, presentations & README SVGs
+├── Test Samples/              # Sample produce images
+├── Food-Freshness AI Model/   # Training notebooks, plots & confusion matrices
+└── requirements.txt           # Points to backend/requirements.txt
 ```
 
----
+<br>
 
-## Deliverables
+<p align="center">
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="docs/assets/section-divider-dark.svg">
+    <source media="(prefers-color-scheme: light)" srcset="docs/assets/section-divider-light.svg">
+    <img src="docs/assets/section-divider-light.svg" alt="" width="1000" height="2">
+  </picture>
+</p>
 
-| Deliverable | Location |
+## 📄 Research & Documentation
+
+| Document | File |
 |---|---|
-| Local web application | `http://127.0.0.1:5000` after starting the backend |
-| Presentation PDF | [`docs/FreshSense_Presentation_Designed.pdf`](docs/FreshSense_Presentation_Designed.pdf) |
-| Product requirements PDF | [`docs/FreshSense_PRD.pdf`](docs/FreshSense_PRD.pdf) |
-| Editable presentation | [`docs/Food Freshness Detection.pptx`](docs/Food%20Freshness%20Detection.pptx) |
-| Research paper | [`docs/Food Freshness Detection Using Machine Learning Algorithms.pdf`](docs/Food%20Freshness%20Detection%20Using%20Machine%20Learning%20Algorithms.pdf) |
+| Research Paper | [`docs/Food Freshness Detection Using Machine Learning Algorithms.pdf`](docs/Food%20Freshness%20Detection%20Using%20Machine%20Learning%20Algorithms.pdf) |
+| Product Requirements (PRD) | [`docs/FreshSense_PRD.pdf`](docs/FreshSense_PRD.pdf) |
+| Presentation (PDF) | [`docs/FreshSense_Presentation_Designed.pdf`](docs/FreshSense_Presentation_Designed.pdf) |
+| Presentation (Editable) | [`docs/Food Freshness Detection.pptx`](docs/Food%20Freshness%20Detection.pptx) |
 
----
+<br>
+
+<p align="center">
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="docs/assets/section-divider-dark.svg">
+    <source media="(prefers-color-scheme: light)" srcset="docs/assets/section-divider-light.svg">
+    <img src="docs/assets/section-divider-light.svg" alt="" width="1000" height="2">
+  </picture>
+</p>
+
+## 🛠️ Troubleshooting & Scope
+
+| Issue | Fix |
+|---|---|
+| `python` not found | Install 64-bit Python 3.12+ with **Add Python to PATH** and reopen your terminal. |
+| Missing module | Install dependencies using the `.venv` Python binary shown in Quick Start. |
+| Model file not found | Ensure `backend/models/MobileNetV2_best_model.keras` is present. |
+| Port `5000` busy | Stop the previous Flask instance before launching again. |
+
+> ⚠️ **Scope:** Predictions are trained on 13 specific produce species and intended for academic demonstration—always inspect food visually before consumption.
+
+<br>
+
+<p align="center">
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="docs/assets/section-divider-dark.svg">
+    <source media="(prefers-color-scheme: light)" srcset="docs/assets/section-divider-light.svg">
+    <img src="docs/assets/section-divider-light.svg" alt="" width="1000" height="2">
+  </picture>
+</p>
 
 <div align="center">
   <sub>Veylo • Automated Produce Diagnostics via Computer Vision • September 2026</sub>
